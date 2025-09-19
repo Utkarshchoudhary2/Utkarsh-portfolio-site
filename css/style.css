@@ -6,6 +6,14 @@ body {
   color: white;
   overflow-x: hidden;
 }
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
 .sidebar {
   height: 100%;
   width: 70px;
@@ -60,6 +68,8 @@ body {
   margin-left: 70px;
   padding: 20px;
   transition: 0.3s;
+  position: relative;
+  z-index: 1;
 }
 .sidebar.expanded ~ .main {
   margin-left: 200px;
