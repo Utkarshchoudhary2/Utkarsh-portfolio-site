@@ -1,43 +1,27 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>2D Platformer — Utkarsh</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body class="dark">
-  <main class="main-content">
-    <h1>2D Platformer</h1>
-    <p>Use arrow keys to move and jump. Enjoy!</p>
-    <div id="game-area"></div>
-  </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
-  <script>
-    const config = {
-      type: Phaser.AUTO, width: 800, height: 450, parent: 'game-area',
-      physics: { default: 'arcade', arcade: { gravity: { y: 800 } } },
-      scene: {
-        create() {
-          this.cameras.main.setBackgroundColor('#071021');
-          const platforms = this.physics.add.staticGroup();
-          platforms.create(400, 430, null).setDisplaySize(800, 40).refreshBody();
-          this.player = this.physics.add.sprite(100, 300, null).setDisplaySize(28,42);
-          this.player.setBounce(0.1).setCollideWorldBounds(true);
-          const g = this.add.graphics(); g.fillStyle(0x00bfff,1); g.fillRect(-14,-21,28,42);
-          this.player.setTexture(g.generateTexture('p',28,42)); g.destroy();
-          this.physics.add.collider(this.player, platforms);
-          this.cursors = this.input.keyboard.createCursorKeys();
-        },
-        update() {
-          if(this.cursors.left.isDown) this.player.setVelocityX(-200);
-          else if(this.cursors.right.isDown) this.player.setVelocityX(200); else this.player.setVelocityX(0);
-          if(this.cursors.up.isDown && this.player.body.touching.down) this.player.setVelocityY(-450);
-        }
-      }
-    };
-    new Phaser.Game(config);
-  </script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Game - Utkarsh</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head><body><aside class="sidebar" role="navigation" aria-label="Main sidebar">
+  <div class="logo">U</div>
+  <div class="logo-text">Utkarsh</div>
+  <nav class="nav" role="menu">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="about.html" class="nav-link"><i class="fa-solid fa-user"></i><span>About</span></a>
+    <a href="projects.html" class="nav-link"><i class="fa-solid fa-layer-group"></i><span>Projects</span></a>
+    <a href="game.html" class="nav-link"><i class="fa-solid fa-gamepad"></i><span>Game</span></a>
+    <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+  </nav>
+  <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i><span>Resume</span></a>
+  <button id="logoutBtn" style="margin-top:8px;background:transparent;border:none;color:var(--muted);cursor:pointer;padding:8px;border-radius:8px">Logout</button>
+</aside>
+<div id="global-loader" class="loader-wrap"><div><div class="loader"></div><div class="loader-text">Utkarsh Portfolio Loading…</div></div></div><main><section class='section container' data-aos='fade-up'><h2>Game Demo</h2><p class='lead'>Play the 2D platformer demo below.</p><div style='margin-top:20px;display:flex;justify-content:center'><iframe src='projects/platformer/index.html' style='width:800px;height:600px;border:0;max-width:100%'></iframe></div></section>
+</main><div class="toast-wrap"></div>
+<script type="module">import {firebaseConfig as _cfg} from './assets/firebase-config.js'; window.firebaseConfig=_cfg;</script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/auth-client.js"></script>
+<script src="assets/script.js"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){AOS.init({duration:800,once:true}); hideLoader(); });</script>
+</body></html>

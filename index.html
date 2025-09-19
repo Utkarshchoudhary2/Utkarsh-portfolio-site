@@ -1,57 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Login — Utkarsh Portfolio</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body class="dark">
-
-  <div id="particles-js" style="position:fixed;inset:0;z-index:0"></div>
-
-  <main style="position:relative;z-index:10;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
-    <div class="card glass" data-aos="zoom-in" style="max-width:420px;width:100%;text-align:center;">
-      <div style="font-size:28px;font-weight:800;margin-bottom:8px;color:var(--accent)">Utkarsh</div>
-      <p style="color:var(--muted);margin-bottom:18px">Login to access Resume & Projects</p>
-
-      <input id="email" class="input" type="email" placeholder="Email" />
-      <input id="password" class="input" type="password" placeholder="Password" />
-      <label style="display:flex;align-items:center;gap:8px;justify-content:center;margin-top:6px">
-        <input id="rememberMe" type="checkbox" /> <span style="color:var(--muted)">Remember me</span>
-      </label>
-
-      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px">
-        <button id="loginBtn" class="btn">Login</button>
-        <button id="signupBtn" class="btn ghost">Sign up</button>
-      </div>
-
-      <p style="margin-top:12px"><a href="#" id="resetBtn" class="link">Forgot password?</a></p>
-    </div>
-  </main>
-
-  <div id="toast-wrap" aria-live="polite"></div>
-
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  <script src="js/app.js"></script>
-  <script>
-    AOS.init();
-    if(window.particlesJS) {
-      particlesJS('particles-js', {
-        "particles": {
-          "number": { "value": 40 },
-          "color": { "value": "#00bfff" },
-          "opacity": { "value": 0.12 },
-          "size": { "value": 3 },
-          "move": { "speed": 0.6 }
-        }, "interactivity": { "events": { "onhover": { "enable": true, "mode": "repulse" } } }
-      });
-    }
-  </script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home - Utkarsh</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head><body><aside class="sidebar" role="navigation" aria-label="Main sidebar">
+  <div class="logo">U</div>
+  <div class="logo-text">Utkarsh</div>
+  <nav class="nav" role="menu">
+    <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="about.html" class="nav-link"><i class="fa-solid fa-user"></i><span>About</span></a>
+    <a href="projects.html" class="nav-link"><i class="fa-solid fa-layer-group"></i><span>Projects</span></a>
+    <a href="game.html" class="nav-link"><i class="fa-solid fa-gamepad"></i><span>Game</span></a>
+    <a href="contact.html" class="nav-link"><i class="fa-solid fa-envelope"></i><span>Contact</span></a>
+  </nav>
+  <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i><span>Resume</span></a>
+  <button id="logoutBtn" style="margin-top:8px;background:transparent;border:none;color:var(--muted);cursor:pointer;padding:8px;border-radius:8px">Logout</button>
+</aside>
+<div id="global-loader" class="loader-wrap"><div><div class="loader"></div><div class="loader-text">Utkarsh Portfolio Loading…</div></div></div><main><section class="section container" data-aos="fade-up"><h1>Hi — I'm Utkarsh</h1><p class="lead">Diploma + B.Tech | Web, Cybersecurity & Game Design</p></section>
+</main><div class="toast-wrap"></div>
+<script type="module">import {firebaseConfig as _cfg} from './assets/firebase-config.js'; window.firebaseConfig=_cfg;</script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="assets/auth-client.js"></script>
+<script src="assets/script.js"></script>
+<script>document.addEventListener('DOMContentLoaded',function(){AOS.init({duration:800,once:true}); hideLoader(); });</script>
+</body></html>
