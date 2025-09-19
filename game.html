@@ -14,11 +14,9 @@
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 let frames = 0;
-const DEGREE = Math.PI/180;
-// sprite simulation
 const bird = {
   x: 50, y: 150, w: 34, h: 26,
-  gravity: 0.25, jump: 4.6, speed: 0, rotation: 0,
+  gravity: 0.25, jump: 4.6, speed: 0,
   draw(){ ctx.fillStyle="yellow"; ctx.fillRect(this.x,this.y,this.w,this.h); },
   flap(){ this.speed = -this.jump; },
   update(){ this.speed += this.gravity; this.y += this.speed; if(this.y+this.h>=canvas.height){this.y=canvas.height-this.h; this.speed=0;} }
