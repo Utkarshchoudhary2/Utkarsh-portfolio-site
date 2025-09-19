@@ -15,6 +15,7 @@ body {
   padding-top: 20px;
   transition: 0.3s;
   overflow-x: hidden;
+  z-index: 1000;
 }
 .sidebar.expanded {
   width: 200px;
@@ -54,3 +55,29 @@ body {
   font-size: 22px;
   color: white;
 }
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  margin-bottom: 30px;
+}
+.card h2 { color: #00aaff; }
+button {
+  background:#14a1ff;
+  color:#fff;
+  border:none;
+  padding:10px 20px;
+  border-radius:6px;
+  cursor:pointer;
+}
+button:hover {background:#0d8ae5;}
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: none;
+}
+form button { width: 100%; }
+canvas { display:block; margin:0 auto; background:#70c5ce; }
