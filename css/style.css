@@ -1,0 +1,56 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: white;
+}
+.sidebar {
+  height: 100%;
+  width: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  padding-top: 20px;
+  transition: 0.3s;
+  overflow-x: hidden;
+}
+.sidebar.expanded {
+  width: 200px;
+}
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+.sidebar i {
+  margin-right: 10px;
+}
+.sidebar span {
+  display: none;
+}
+.sidebar.expanded span {
+  display: inline;
+}
+.main {
+  margin-left: 60px;
+  padding: 20px;
+  transition: 0.3s;
+}
+.sidebar.expanded ~ .main {
+  margin-left: 200px;
+}
+.toggle-btn {
+  cursor: pointer;
+  margin: 10px;
+  font-size: 22px;
+  color: white;
+}
