@@ -8,6 +8,7 @@
   <script src="https://kit.fontawesome.com/4b3a4d3f7f.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  
   <div id="sidebar" class="sidebar">
     <div class="toggle-btn" onclick="toggleSidebar()">☰</div>
     <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
@@ -16,9 +17,27 @@
     <a href="contact.html"><i class="fas fa-envelope"></i> <span>Contact</span></a>
     <a href="resume.pdf" target="_blank"><i class="fas fa-file"></i> <span>Resume</span></a>
   </div>
+
   <div class="main">
     <h1>Contact</h1>
-    <p>Use the contact form below to get in touch.</p>
+    
+<form id="contact-form">
+  <input type="text" name="from_name" placeholder="Your Name" required>
+  <input type="email" name="reply_to" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send</button>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+(function(){{ emailjs.init("MVNLMa6XAnCSIfOnY"); }})();
+document.getElementById("contact-form").addEventListener("submit", function(e){{
+  e.preventDefault();
+  emailjs.sendForm("service_6bwckaq","template_otmgn2e", this)
+    .then(() => {{ alert("Message sent!"); this.reset(); }})
+    .catch(err => {{ alert("Failed: " + JSON.stringify(err)); }});
+}});
+</script>
+
   </div>
   <script src="js/script.js"></script>
 </body>
