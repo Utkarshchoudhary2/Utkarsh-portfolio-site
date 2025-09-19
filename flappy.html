@@ -1,33 +1,38 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Flappy Bird Game</title>
-  <link rel="stylesheet" href="./css/style.css">
-<script src="./js/script.js" defer></script>
+  <title>Flappy Bird Clone</title>
   <style>
-    body {margin:0;overflow:hidden;}
-    canvas {display:block;margin:0 auto;background:#70c5ce;}
+    body { margin:0; background:black; display:flex; justify-content:center; align-items:center; height:100vh; }
+    canvas { background: skyblue; display:block; }
   </style>
 </head>
 <body>
-<canvas id="gameCanvas" width="320" height="480"></canvas>
-<script>
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-let frames = 0;
-const bird = {
-  x: 50, y: 150, w: 34, h: 26,
-  gravity: 0.25, jump: 4.6, speed: 0,
-  draw(){ ctx.fillStyle="yellow"; ctx.fillRect(this.x,this.y,this.w,this.h); },
-  flap(){ this.speed = -this.jump; },
-  update(){ this.speed += this.gravity; this.y += this.speed; if(this.y+this.h>=canvas.height){this.y=canvas.height-this.h; this.speed=0;} }
-};
-canvas.addEventListener("click", function(){ bird.flap(); });
-function draw(){ ctx.fillStyle="#70c5ce"; ctx.fillRect(0,0,canvas.width,canvas.height); bird.draw(); }
-function update(){ bird.update(); }
-function loop(){ update(); draw(); frames++; requestAnimationFrame(loop); }
-loop();
-</script>
+  <canvas id="gameCanvas" width="320" height="480"></canvas>
+  <script>
+    const canvas=document.getElementById("gameCanvas");
+    const ctx=canvas.getContext("2d");
+    let birdY=200,gravity=2,velocity=0,jump=-25,pipes=[],frame=0,score=0;
+    document.addEventListener("keydown",()=>velocity=jump);
+    function drawBird(){ctx.fillStyle="yellow";ctx.beginPath();ctx.arc(80,birdY,15,0,Math.PI*2);ctx.fill();}
+    function drawPipes(){
+      for(let i=0;i<pipes.length;i++){
+        let p=pipes[i];
+        ctx.fillStyle="green";
+        ctx.fillRect(p.x,0,50,p.top);
+        ctx.fillRect(p.x,p.top+120,50,canvas.height);
+      }
+    }
+    function update(){
+      frame++;ctx.clearRect(0,0,canvas.width,canvas.height);
+      velocity+=gravity*0.5;birdY+=velocity*0.5;
+      if(frame%90===0){let top=Math.random()*200+50;pipes.push({x:canvas.width,top:top});}
+      for(let i=0;i<pipes.length;i++){pipes[i].x-=2;if(pipes[i].x+50<0){pipes.shift();score++;}}
+      drawBird();drawPipes();
+      ctx.fillStyle="black";ctx.font="20px Arial";ctx.fillText("Score: "+score,10,20);
+      requestAnimationFrame(update);
+    }update();
+  </script>
 </body>
 </html>
