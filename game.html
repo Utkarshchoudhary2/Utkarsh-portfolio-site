@@ -1,33 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Flappy Bird Game</title>
-  <link rel="stylesheet" href="./css/style.css">
-<script src="./js/script.js" defer></script>
-  <style>
-    body {margin:0;overflow:hidden;}
-    canvas {display:block;margin:0 auto;background:#70c5ce;}
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>2D Platformer — Utkarsh</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
-<canvas id="gameCanvas" width="320" height="480"></canvas>
-<script>
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
-let frames = 0;
-const bird = {
-  x: 50, y: 150, w: 34, h: 26,
-  gravity: 0.25, jump: 4.6, speed: 0,
-  draw(){ ctx.fillStyle="yellow"; ctx.fillRect(this.x,this.y,this.w,this.h); },
-  flap(){ this.speed = -this.jump; },
-  update(){ this.speed += this.gravity; this.y += this.speed; if(this.y+this.h>=canvas.height){this.y=canvas.height-this.h; this.speed=0;} }
-};
-canvas.addEventListener("click", function(){ bird.flap(); });
-function draw(){ ctx.fillStyle="#70c5ce"; ctx.fillRect(0,0,canvas.width,canvas.height); bird.draw(); }
-function update(){ bird.update(); }
-function loop(){ update(); draw(); frames++; requestAnimationFrame(loop); }
-loop();
-</script>
+<body class="dark">
+  <main class="main-content">
+    <h1>2D Platformer</h1>
+    <p>Use arrow keys to move and jump. Enjoy!</p>
+    <div id="game-area"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+  <script>
+    const config = {
+      type: Phaser.AUTO, width: 800, height: 450, parent: 'game-area',
+      physics: { default: 'arcade', arcade: { gravity: { y: 800 } } },
+      scene: {
+        create() {
+          this.cameras.main.setBackgroundColor('#071021');
+          const platforms = this.physics.add.staticGroup();
+          platforms.create(400, 430, null).setDisplaySize(800, 40).refreshBody();
+          this.player = this.physics.add.sprite(100, 300, null).setDisplaySize(28,42);
+          this.player.setBounce(0.1).setCollideWorldBounds(true);
+          const g = this.add.graphics(); g.fillStyle(0x00bfff,1); g.fillRect(-14,-21,28,42);
+          this.player.setTexture(g.generateTexture('p',28,42)); g.destroy();
+          this.physics.add.collider(this.player, platforms);
+          this.cursors = this.input.keyboard.createCursorKeys();
+        },
+        update() {
+          if(this.cursors.left.isDown) this.player.setVelocityX(-200);
+          else if(this.cursors.right.isDown) this.player.setVelocityX(200); else this.player.setVelocityX(0);
+          if(this.cursors.up.isDown && this.player.body.touching.down) this.player.setVelocityY(-450);
+        }
+      }
+    };
+    new Phaser.Game(config);
+  </script>
 </body>
 </html>
