@@ -6,97 +6,77 @@ body {
   color: white;
   overflow-x: hidden;
 }
-#particles-js {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  top: 0;
-  left: 0;
-}
 .sidebar {
-  height: 100%;
-  width: 70px;
   position: fixed;
-  top: 0;
   left: 0;
-  background-color: #111;
-  padding-top: 20px;
-  transition: 0.3s;
-  overflow-x: hidden;
-  z-index: 1000;
+  top: 0;
+  width: 70px;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  transition: width 0.3s;
+  overflow: hidden;
 }
 .sidebar.expanded {
   width: 200px;
 }
-.sidebar .ucircle {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  background: #14a1ff;
-  color: white;
+.sidebar .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 22px;
-  font-weight: bold;
-  margin: 0 auto 20px auto;
-  cursor: pointer;
+  height: 80px;
+  font-size: 28px;
+  background: #007bff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin: 15px auto;
 }
-.sidebar a {
-  padding: 12px 15px;
-  text-decoration: none;
-  font-size: 18px;
-  color: #818181;
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
   display: flex;
   align-items: center;
-  transition: 0.3s;
+  padding: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
-.sidebar a:hover {
-  color: #f1f1f1;
+.sidebar ul li:hover {
+  background: rgba(255,255,255,0.1);
 }
-.sidebar i {
-  margin-right: 10px;
+.sidebar ul li i {
+  margin-right: 15px;
 }
-.sidebar span {
-  display: none;
-}
-.sidebar.expanded span {
-  display: inline;
-}
-.main {
+.content {
   margin-left: 70px;
   padding: 20px;
-  transition: 0.3s;
-  position: relative;
-  z-index: 1;
+  transition: margin-left 0.3s;
 }
-.sidebar.expanded ~ .main {
+.sidebar.expanded ~ .content {
   margin-left: 200px;
 }
 .card {
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,123,255,0.2);
+  margin: 20px;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-  margin-bottom: 30px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
 }
-.card h2 { color: #00aaff; }
 button {
-  background:#14a1ff;
-  color:#fff;
-  border:none;
-  padding:10px 20px;
-  border-radius:6px;
-  cursor:pointer;
-}
-button:hover {background:#0d8ae5;}
-form input, form textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
+  background: #007bff;
+  color: white;
   border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
 }
-form button { width: 100%; }
-canvas { display:block; margin:0 auto; background:#70c5ce; }
+button:hover {
+  background: #0056b3;
+}
+canvas#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
