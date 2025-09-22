@@ -1,54 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Utkarsh Portfolio</title>
-  <link rel="stylesheet" href="css/style.css"/>
-</head>
-<body class="dark">
-
-  <!-- Sidebar -->
-  <nav class="sidebar">
-    <div class="profile-icon">U</div>
-    <a href="#" id="homeLink">🏠</a>
-    <a href="#">👤</a>
-    <a href="#" id="sidebar-projects">📂</a>
-    <a href="assets/Utkarsh_Modern_Resume.pdf" target="_blank">📄</a>
-    <a href="contact.html">✉️</a>
-    <a href="#" id="logoutBtn">🚪</a>
-  </nav>
-
-  <!-- Hamburger -->
-  <button class="hamburger" id="hamburger">☰</button>
-
-  <!-- Content -->
-  <main class="content">
-    <h1 id="welcome-title">Welcome, Utkarsh 👋</h1>
-    <p>This is the professional, modern portfolio home page.</p>
-
-    <section id="projects-section">
-      <h2>Projects</h2>
-      <div class="project-card">
-        <h3>Portfolio Website</h3>
-        <button class="btn">View Demo</button>
-      </div>
-      <div class="project-card">
-        <h3>Secure Login System</h3>
-        <button class="btn">View Demo</button>
-      </div>
-      <div class="project-card">
-        <h3>2D Game Demo</h3>
-        <button class="btn">Play Demo</button>
-      </div>
-    </section>
-  </main>
-
-  <div id="toast-wrap"></div>
-  <div id="modal-backdrop"></div>
-
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="js/app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Home</title><link rel="stylesheet" href="css/style.css"/><link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"></head><body class="dark">
+<aside class="sidebar" id="sidebar"><div class="sidebar-top"><div class="avatar" id="sidebar-avatar">U</div><nav class="nav"><a href="home.html" class="nav-link" title="Home">🏠</a><a href="about.html" class="nav-link" title="About">👤</a><a href="#" id="sidebar-projects" class="nav-link" title="Projects">📂</a><a href="contact.html" class="nav-link" title="Contact">✉️</a></nav></div><div class="sidebar-bottom"><a href="#" id="sidebar-resume" class="nav-link resume-link" title="Resume">📄</a><button id="logoutBtn" class="icon-btn" title="Logout">⏻</button></div></aside>
+<main class="main-content"><section class="hero" data-aos="fade-up"><div class="welcome-card"><h1 id="welcome-title">Welcome, Utkarsh 👋</h1><p>Diploma + BTech — Web, Cybersecurity, Game Dev</p><div style="margin-top:18px"><button class="btn" onclick="openProjectsIfAuth()">View Projects</button><button class="btn" onclick="openResumeIfAuth()">My Resume</button></div></div></section></main>
+<div id="modal-backdrop" class="modal-backdrop"><div id="modal-resume" class="modal" style="display:none"><button class="close-x" data-target="modal-resume">✖</button><h3>Resume</h3><div style="display:flex;gap:12px"><a id="open-resume" class="btn" target="_blank" href="assets/Utkarsh_Modern_Resume.pdf">Open in new tab</a><button id="download-resume" class="btn">Download Resume</button></div></div><div id="modal-projects" class="modal" style="display:none"><button class="close-x" data-target="modal-projects">✖</button><h3>Projects</h3><div class="projects-grid"><div class="project-card" data-aos="fade-up" data-aos-delay="0"><h4>Secure Login System</h4><p>Firebase-based secure login demo.</p><button class="btn" onclick="window.open('projects/secure-login/client/login.html','_blank')">Try Demo</button></div><div class="project-card" data-aos="fade-up" data-aos-delay="150"><h4>Portfolio Website</h4><p>Responsive portfolio with animations.</p><button class="btn" onclick="window.open('https://utkarsh-chaudhary-pi.vercel.app','_blank')">View Demo</button></div><div class="project-card" data-aos="fade-up" data-aos-delay="300"><h4>2D Platformer Demo</h4><p>Fun 2D platformer built with Phaser.</p><button class="btn" onclick="window.open('projects/platformer/index.html','_blank')">Play Demo</button></div></div></div></div>
+<div id="toast-wrap"></div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script><script src="js/app.js"></script><script>AOS.init();</script></body></html>
