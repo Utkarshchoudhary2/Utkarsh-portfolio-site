@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Secure Login System Demo</title>
+<style>
+  body {
+    background: #10192b;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .container {
+    background: #19223c;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,170,255,0.6);
+    width: 320px;
+    text-align: center;
+  }
+  input[type="text"], input[type="password"] {
+    display: block;
+    margin: 12px auto;
+    width: 90%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 16px;
+  }
+  button {
+    background: #00aaff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 18px;
+    transition: background 0.3s ease;
+  }
+  button:hover {
+    background: #0078a8;
+  }
+  .msg {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #ff5555;
+  }
+  .success {
+    color: #55ff55;
+  }
+</style>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Secure Login System Demo</h2>
+  <input type="text" id="username" placeholder="Username" autocomplete="off" />
+  <input type="password" id="password" placeholder="Password" autocomplete="off" />
+  <button id="loginBtn">Login</button>
+  <div id="message" class="msg"></div>
+</div>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyB1NtsmihmojQsWzOwqRo-286cv12spgdE",
+    authDomain: "utkarshchaudhary-portfolio.firebaseapp.com",
+    projectId: "utkarshchaudhary-portfolio",
+    storageBucket: "utkarshchaudhary-portfolio.firebasestorage.app",
+    messagingSenderId: "487685457505",
+    appId: "1:487685457505:web:797c7ac6cc2e40d8c1cc20",
+    measurementId: "G-VYF9PRY0F9"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  // This demo piece only simulates secure login, real backend needed for passwords
+  // For demo: username 'user' and password 'pass123' accepted
+  const loginBtn = document.getElementById("loginBtn");
+  const msg = document.getElementById("message");
+
+  loginBtn.onclick = () => {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+    msg.textContent = "";
+
+    if (!username || !password) {
+      msg.textContent = "Please enter username and password.";
+      return;
+    }
+
+    // Simulate check: only accept username 'user' with password 'pass123'
+    if (username === "user" && password === "pass123") {
+      msg.textContent = "Login successful!";
+      msg.className = "msg success";
+      // Redirect or trigger next step
+    } else {
+      msg.textContent = "Invalid username or password.";
+    }
+  };
+</script>
+
+</body>
+</html>
