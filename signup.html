@@ -1,17 +1,18 @@
-<!-- index.html -->
+<!-- signup.html -->
 <!doctype html>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Signup</title>
   <link rel="stylesheet" href="./css/style.css">
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="js/firebase.js"></script>
-  <script src="js/guard.js"></script>
+  <script src="js/auth.js"></script>
 </head>
 <body>
   <div id="particles-js"></div>
+
   <div id="sidebar" class="sidebar">
     <div class="ucircle" onclick="toggleSidebar()">U</div>
     <a href="index.html"><i class="fas fa-home"></i> <span>Home</span></a>
@@ -24,14 +25,24 @@
   </div>
 
   <div class="main">
-    <h1>Welcome — Home</h1>
-    <div class="card"><p>Hi, this is the home page. You're logged in and verified.</p></div>
-    <button onclick="logout()">Logout</button>
+    <h1>Sign up</h1>
+    <div id="signup-area" class="card form-row">
+      <input id="su-username" placeholder="Username">
+      <input id="su-email" type="email" placeholder="Email">
+      <input id="su-pass" type="password" placeholder="Password">
+      <input id="su-pass2" type="password" placeholder="Confirm Password">
+      <button onclick="signup()">Create account & Send verification</button>
+    </div>
+
+    <div id="verify-area" style="display:none" class="card form-row">
+      <p class="top-note">Verification email sent. Check your inbox (including spam).</p>
+      <button id="resend-btn" onclick="resendVerification()">Resend</button>
+      <p class="note-small">You can resend after 60s.</p>
+    </div>
   </div>
 
   <script src="https://kit.fontawesome.com/4b3a4d3f7f.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
   <script src="js/script.js"></script>
-  <script src="js/auth.js"></script>
 </body>
 </html>
