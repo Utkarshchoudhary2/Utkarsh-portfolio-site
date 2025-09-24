@@ -26,11 +26,88 @@
     }
   });
 </script>
+<style>
+  #particles-js {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background-color: #10192b;
+  }
+  aside.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75px;
+    height: 70vh;
+    background: #0b1220;
+    border-top-right-radius: 32px;
+    border-bottom-right-radius: 32px;
+    box-shadow: 3px 0 30px #14315c66;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    z-index: 5;
+  }
+  nav.sidebar-menu button {
+    background: #142345;
+    border: none;
+    border-radius: 30px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #5bbefa;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 8px #145f8380;
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  nav.sidebar-menu button.active,
+  nav.sidebar-menu button:hover {
+    background: #00aaff;
+    color: #152c44;
+    box-shadow: 0 0 20px #00aaff;
+  }
+  main {
+    position: relative;
+    margin-left: 75px;
+    padding: 48px 32px;
+    z-index: 1;
+    max-width: 720px;
+    color: white;
+  }
+
+  /* Adjusted Font Sizes */
+  h1 {
+    font-size: 2.4rem; /* Moderate size bigger than default */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #5bbefa;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cbd4e1;
+    max-width: 580px;
+  }
+  .profile-icon {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #5bbefa;
+  }
+</style>
 </head>
 <body>
 
-<div id="tsparticles"></div>
+<div id="particles-js"></div>
 
+<a href="login.html" style="position:relative; z-index:1; color:#5bbefa; padding:10px; display:inline-block;">Login</a>
 <aside class="sidebar">
   <div class="profile-icon">U</div>
   <nav class="sidebar-menu">
@@ -41,8 +118,8 @@
     </button>
     <button aria-label="About" onclick="location.href='about.html'">
       <svg width="26" height="26" fill="#5bbefa" viewBox="0 0 24 24">
-        <circle cx="12" cy="7" r="4"></circle>
-        <path d="M5.5 21a6.5 6.5 0 0113 0"></path>
+        <circle cx="12" cy="7" r="4" fill="#5bbefa"></circle>
+        <path d="M5.5 21a6.5 6.5 0 0113 0" stroke="#5bbefa" stroke-width="2" fill="none"></path>
       </svg>
     </button>
     <button aria-label="Projects" onclick="location.href='projects.html'">
@@ -57,24 +134,79 @@
       </svg>
     </button>
   </nav>
-<!-- Resume Button with Icon -->
-<a href="your-resume.pdf" target="_blank" class="resume-button" title="Download Resume">
-  <svg width="24" height="24" fill="#152c44" viewBox="0 0 24 24">
-    <path fill="currentColor"
-          d="M6 2a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 
-             2 0 0 0 2-2V8l-6-6H6zm7 7V3.5L18.5 9H13z"/>
+<a href="your-resume.pdf" target="_blank" class="resume-button" title="Download Resume" style="position:relative; z-index:1; display:flex; justify-content:center; align-items:center; width:50px; height:50px; border-radius:50%; background:#00aaff; box-shadow:0 0 18px #00aaffaa; text-decoration:none;">
+  <svg width="24" height="24" fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <path d="M6 2a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zM13 3.5v5.5h5.5L13 3.5z"/>
   </svg>
 </a>
-<div class="logout">Logout</div>
+<div class="logout" onclick="logout()" aria-label="Logout" role="button" tabindex="0">
+  <svg width="24" height="24" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M16 13v-2H7V8l-5 4 5 4v-3zM20 3h-8v2h8v14h-8v2h8a2 2 0 002-2V5a2 2 0 00-2-2z"/>
+  </svg>
+</div>
+
+<script>
+  function logout() {
+    window.location.href = 'login.html'; // Redirect to login page on logout
+  }
+</script>
 </aside>
 
 <main>
   <section id="home" class="content-section active">
-    <h1>Hi — I'm Utkarsh Chaudhary</h1>
+    <h1 id="greeting">Hi — I'm Utkarsh Chaudhary</h1>
     <p>Aspiring Software Developer • Web, Cybersecurity & Game Design. Diploma + B.Tech student building modern, secure and interactive experiences.</p>
   </section>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@3"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 50, density: { enable: true, value_area: 900 } },
+      color: { value: ["#00aaff", "#5bbefa", "#037fff"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.3 } },
+      size: { value: 4, random: true },
+      line_linked: {
+        enable: true,
+        distance: 120,
+        color: "#5bbefa",
+        opacity: 0.3,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        random: true,
+        straight: false,
+        out_mode: "bounce",
+        bounce: false
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 140, line_linked: { opacity: 1 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+</script>
+
+<script>
+  function logout() {
+    // Optional: clear any local storage / cookies or call sign out APIs
+    window.location.href = 'login.html'; // Redirect to login page
+  }
+</script>
+
 </body>
 </html>

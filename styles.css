@@ -19,7 +19,7 @@ aside.sidebar {
   top: 0;
   left: 0;
   width: 75px;
-  height: 100vh;
+  height: 70vh; /* Adjust as needed (70vh or 72vh) */
   background: #0b1220;
   border-top-right-radius: 32px;
   border-bottom-right-radius: 32px;
@@ -29,6 +29,16 @@ aside.sidebar {
   align-items: center;
   padding: 24px 0;
   z-index: 5;
+  justify-content: flex-start;
+}
+#tsparticles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background-color: #10192b;
 }
 .profile-icon {
   width: 50px;
@@ -76,16 +86,25 @@ nav.sidebar-menu button:hover {
   box-shadow: 0 0 20px #00aaff;
 }
 .logout {
-  color: #00aaff;
+  margin-top: auto; /* Push to bottom */
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #00aaff;
+  color: white;
+  font-weight: 700;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  box-shadow: 0 0 15px #00aaffcc;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 12px;
-  text-align: center;
 }
 .logout:hover {
-  opacity: 1;
+  background-color: #005f9e;
+  box-shadow: 0 0 25px #005f9ecc;
 }
 /* Resume Button Style */
 .resume-button {
@@ -256,4 +275,14 @@ main {
 
 .project-btn:hover {
   background: #0078a8;
+}
+/* ---- reset ---- */ body{ margin:0; font:normal 75% Arial, Helvetica, sans-serif; } canvas{ display: block; vertical-align: bottom; } /* ---- particles.js container ---- */ #particles-js{ position:absolute; width: 100%; height: 100%; background-color: #b61924; background-image: url(""); background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; } /* ---- stats.js ---- */ .count-particles{ background: #000022; position: absolute; top: 48px; left: 0; width: 80px; color: #13E8E9; font-size: .8em; text-align: left; text-indent: 4px; line-height: 14px; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; } .js-count-particles{ font-size: 1.1em; } #stats, .count-particles{ -webkit-user-select: none; margin-top: 5px; margin-left: 5px; } #stats{ border-radius: 3px 3px 0 0; overflow: hidden; } .count-particles{ border-radius: 0 0 3px 3px; }
+
+.project-card.active {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 48px rgba(0, 170, 255, 0.6);
+  background: linear-gradient(145deg, #1c3b77, #2658c4);
+}
+.project-card.active h3 {
+  color: #ffffff;
 }

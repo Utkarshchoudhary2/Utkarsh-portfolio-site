@@ -14,52 +14,83 @@
     align-items: center;
     height: 100vh;
     margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  #particles-js {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
   }
   .container {
     background: #19223c;
     padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,170,255,0.6);
-    width: 320px;
+    border-radius: 16px;
+    box-shadow: 0 12px 28px rgba(0,170,255,0.6);
+    width: 280px;
+    max-width: 90vw;
     text-align: center;
+    transition: box-shadow 0.3s ease;
+  }
+  .container:hover {
+    box-shadow: 0 18px 48px rgba(0,170,255,0.8);
+  }
+  h2 {
+    margin-bottom: 22px;
+    font-size: 26px;
+    font-weight: 700;
+    color: #5bbefa;
   }
   input[type="text"], input[type="password"] {
     display: block;
     margin: 12px auto;
     width: 90%;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 10px;
     border: none;
     font-size: 16px;
+    background: #0f1e3a;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+  input[type="text"]:focus, input[type="password"]:focus {
+    background: #152c44;
+    outline: none;
+    box-shadow: 0 0 8px #00aaff;
   }
   button {
     background: #00aaff;
     border: none;
-    padding: 10px 28px;
-    border-radius: 8px;
+    padding: 12px 0;
+    border-radius: 12px;
     color: white;
     font-weight: 600;
     cursor: pointer;
     margin-top: 20px;
     font-size: 18px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 18px rgba(0,170,255,0.7);
   }
   button:hover {
     background: #0078a8;
+    box-shadow: 0 6px 28px rgba(0,120,168,0.9);
   }
   .msg {
     margin-top: 20px;
     font-weight: 600;
     color: #ff5555;
-  }
-  .success {
-    color: #55ff55;
+    min-height: 22px;
   }
 </style>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
 </head>
 <body>
+
+<div id="particles-js"></div>
 
 <div class="container">
   <h2>Secure Login System Demo</h2>
@@ -69,7 +100,47 @@
   <div id="message" class="msg"></div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
+  particlesJS("particles-js", {
+    particles: {
+      number: { value: 50, density: { enable: true, value_area: 900 } },
+      color: { value: ["#00aaff", "#5bbefa", "#037fff"] },
+      shape: { type: "circle" },
+      opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.3 } },
+      size: { value: 4, random: true },
+      line_linked: {
+        enable: true,
+        distance: 120,
+        color: "#5bbefa",
+        opacity: 0.3,
+        width: 1
+      },
+      move: {
+        enable: true,
+        speed: 2,
+        direction: "none",
+        random: true,
+        straight: false,
+        out_mode: "bounce",
+        bounce: false
+      }
+    },
+    interactivity: {
+      detect_on: "canvas",
+      events: {
+        onhover: { enable: true, mode: "grab" },
+        onclick: { enable: true, mode: "push" },
+        resize: true
+      },
+      modes: {
+        grab: { distance: 140, line_linked: { opacity: 1 } },
+        push: { particles_nb: 4 }
+      }
+    },
+    retina_detect: true
+  });
+
   const firebaseConfig = {
     apiKey: "AIzaSyB1NtsmihmojQsWzOwqRo-286cv12spgdE",
     authDomain: "utkarshchaudhary-portfolio.firebaseapp.com",
@@ -81,8 +152,6 @@
   };
   firebase.initializeApp(firebaseConfig);
 
-  // This demo piece only simulates secure login, real backend needed for passwords
-  // For demo: username 'user' and password 'pass123' accepted
   const loginBtn = document.getElementById("loginBtn");
   const msg = document.getElementById("message");
 

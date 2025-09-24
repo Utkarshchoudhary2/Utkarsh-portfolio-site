@@ -1,4 +1,13 @@
-// Wait for DOM content loaded to initialize particles and other scripts
+document.getElementById('portfolio-content').style.display = 'none'; // initially hide
+
+auth.onAuthStateChanged(user => {
+  if (!user || !user.emailVerified) {
+    window.location.href = 'login.html';
+  } else {
+    document.getElementById('portfolio-content').style.display = 'block'; // show only if logged in
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   tsParticles.load("tsparticles", {
     background: {
@@ -140,4 +149,32 @@ document.addEventListener("DOMContentLoaded", () => {
       clearTimeout(popupTimeout);
     }
   }
+});
+
+const username = document.getElementById("username").value.trim();
+// after login success:
+localStorage.setItem('loggedInUser', username);
+window.location.href = 'home.html'; // redirect to home
+
+window.onload = () => {
+  const user = localStorage.getItem('loggedInUser');
+  const greetingEl = document.getElementById('greeting');
+  if (user && greetingEl) {
+    greetingEl.textContent = `Hi — ${user}`;
+  }
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".project-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      } else {
+        entry.target.classList.remove("active");
+      }
+    });
+  }, { threshold: 0.5 }); // trigger when 50% visible
+
+  cards.forEach(card => observer.observe(card));
 });
