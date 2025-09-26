@@ -1,212 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Utkarsh Chaudhary | Home</title>
-<link rel="stylesheet" href="styles.css" />
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyB1NtsmihmojQsWzOwqRo-286cv12spgdE",
-    authDomain: "utkarshchaudhary-portfolio.firebaseapp.com",
-    projectId: "utkarshchaudhary-portfolio",
-    storageBucket: "utkarshchaudhary-portfolio.firebasestorage.app",
-    messagingSenderId: "487685457505",
-    appId: "1:487685457505:web:797c7ac6cc2e40d8c1cc20",
-    measurementId: "G-VYF9PRY0F9"
-  };
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-
-  auth.onAuthStateChanged(user => {
-    if (!user || !user.emailVerified) {
-      window.location.href = 'login.html';
-    }
-  });
-</script>
-<style>
-  #particles-js {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    background-color: #10192b;
-  }
-  aside.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 75px;
-    height: 70vh;
-    background: #0b1220;
-    border-top-right-radius: 32px;
-    border-bottom-right-radius: 32px;
-    box-shadow: 3px 0 30px #14315c66;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 0;
-    z-index: 5;
-  }
-  nav.sidebar-menu button {
-    background: #142345;
-    border: none;
-    border-radius: 30px;
-    width: 45px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #5bbefa;
-    transition: background 0.3s, box-shadow 0.3s;
-    box-shadow: 0 0 8px #145f8380;
-    padding: 0;
-    margin-bottom: 15px;
-  }
-  nav.sidebar-menu button.active,
-  nav.sidebar-menu button:hover {
-    background: #00aaff;
-    color: #152c44;
-    box-shadow: 0 0 20px #00aaff;
-  }
-  main {
-    position: relative;
-    margin-left: 75px;
-    padding: 48px 32px;
-    z-index: 1;
-    max-width: 720px;
-    color: white;
-  }
-
-  /* Adjusted Font Sizes */
-  h1 {
-    font-size: 2.4rem; /* Moderate size bigger than default */
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: #5bbefa;
-  }
-  p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #cbd4e1;
-    max-width: 580px;
-  }
-  .profile-icon {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #5bbefa;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utkarsh Chaudhary - 3D Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">UC</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
-<div id="particles-js"></div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="floating-elements">
+                <div class="floating-cube cube-1"></div>
+                <div class="floating-cube cube-2"></div>
+                <div class="floating-cube cube-3"></div>
+                <div class="floating-sphere sphere-1"></div>
+                <div class="floating-sphere sphere-2"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="typing-text" id="typing-text">Utkarsh Chaudhary</span>
+                    <span class="cursor">|</span>
+                </h1>
+                <p class="hero-subtitle">Full-Stack Developer & 3D Web Specialist</p>
+                <p class="hero-tagline">Crafting immersive digital experiences with modern technologies</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn--primary btn-3d">View My Work</a>
+                    <a href="#contact" class="btn btn--outline btn-3d">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="25">0</span>
+                    <span class="stat-label">Clients</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="5">0</span>
+                    <span class="stat-label">Years</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="login.html" style="position:relative; z-index:1; color:#5bbefa; padding:10px; display:inline-block;">Login</a>
-<aside class="sidebar">
-  <div class="profile-icon">U</div>
-  <nav class="sidebar-menu">
-    <button class="active" aria-label="Home" onclick="location.href='home.html'">
-      <svg width="26" height="26" fill="#5bbefa" viewBox="0 0 24 24">
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-      </svg>
-    </button>
-    <button aria-label="About" onclick="location.href='about.html'">
-      <svg width="26" height="26" fill="#5bbefa" viewBox="0 0 24 24">
-        <circle cx="12" cy="7" r="4" fill="#5bbefa"></circle>
-        <path d="M5.5 21a6.5 6.5 0 0113 0" stroke="#5bbefa" stroke-width="2" fill="none"></path>
-      </svg>
-    </button>
-    <button aria-label="Projects" onclick="location.href='projects.html'">
-      <svg width="26" height="26" fill="none" stroke="#5bbefa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-        <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-        <polyline points="2 17 12 22 22 17"/>
-      </svg>
-    </button>
-    <button aria-label="Contact" onclick="location.href='contact.html'">
-      <svg width="26" height="26" fill="#5bbefa" viewBox="0 0 24 24">
-        <path d="M22 6v12H2V6l10 7 10-7z"/>
-      </svg>
-    </button>
-  </nav>
-<a href="Utkarsh_Modern_Resume.pdf" target="_blank" class="resume-button" title="Download Resume" style="position:relative; z-index:1; display:flex; justify-content:center; align-items:center; width:50px; height:50px; border-radius:50%; background:#00aaff; box-shadow:0 0 18px #00aaffaa; text-decoration:none;">
-  <svg width="24" height="24" fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-    <path d="M6 2a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zM13 3.5v5.5h5.5L13 3.5z"/>
-  </svg>
-</a>
-<div class="logout" onclick="logout()" aria-label="Logout" role="button" tabindex="0">
-  <svg width="24" height="24" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-    <path d="M16 13v-2H7V8l-5 4 5 4v-3zM20 3h-8v2h8v14h-8v2h8a2 2 0 002-2V5a2 2 0 00-2-2z"/>
-  </svg>
-</div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello, I'm Utkarsh Chaudhary.<br>
+          I've graduated with <strong>10th + Diploma in Computer Science + B.Tech</strong>.<br>
+          I have mastered <strong>Ethical Hacking, Cybersecurity, Web Designing & Development, and Game Development</strong>.<br>
+          My goal is to craft secure, innovative, and immersive digital experiences using advanced technologies.Passionate full-stack developer with 5+ years of experience creating innovative web applications. I specialize in modern JavaScript frameworks, 3D web technologies, and responsive design.</p>
+                    <p>My mission is to bridge the gap between creativity and functionality, delivering exceptional user experiences that engage and inspire.</p>
+                            <div class="skill-badges">
+          <span class="badge-3d">Ethical Hacking</span>
+          <span class="badge-3d">Cybersecurity</span>
+          <span class="badge-3d">Web Dev & Design</span>
+          <span class="badge-3d">Game Development</span>
+        </div>
+      </div>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Email:</span>
+                            <span class="detail-value">utkarshchaudhary0918@gmail.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Location:</span>
+                            <span class="detail-value">India Haryana Faridabad sec 2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-skills-progress">
+                    <div class="skill-progress" data-skill="JavaScript" data-level="95">
+                        <div class="skill-info">
+                            <span>JavaScript</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress" data-skill="React" data-level="90">
+                        <div class="skill-info">
+                            <span>React</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress" data-skill="Three.js" data-level="85">
+                        <div class="skill-info">
+                            <span>Three.js</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress" data-skill="Node.js" data-level="88">
+                        <div class="skill-info">
+                            <span>Node.js</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-  function logout() {
-    window.location.href = 'login.html'; // Redirect to login page on logout
-  }
-</script>
-</aside>
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-card" data-category="Frontend">
+                    <div class="skill-icon">💻</div>
+                    <h3>JavaScript</h3>
+                    <div class="skill-level">95%</div>
+                    <p>Modern ES6+, Async/Await, DOM Manipulation</p>
+                </div>
+                <div class="skill-card" data-category="Frontend">
+                    <div class="skill-icon">⚛️</div>
+                    <h3>React</h3>
+                    <div class="skill-level">90%</div>
+                    <p>Hooks, Context, Redux, Performance Optimization</p>
+                </div>
+                <div class="skill-card" data-category="3D">
+                    <div class="skill-icon">🎮</div>
+                    <h3>Three.js</h3>
+                    <div class="skill-level">85%</div>
+                    <p>WebGL, 3D Graphics, Animations, Shaders</p>
+                </div>
+                <div class="skill-card" data-category="Backend">
+                    <div class="skill-icon">🟢</div>
+                    <h3>Node.js</h3>
+                    <div class="skill-level">88%</div>
+                    <p>Express, APIs, Real-time Applications</p>
+                </div>
+                <div class="skill-card" data-category="Backend">
+                    <div class="skill-icon">🐍</div>
+                    <h3>Python</h3>
+                    <div class="skill-level">82%</div>
+                    <p>Django, FastAPI, Data Analysis, AI/ML</p>
+                </div>
+                <div class="skill-card" data-category="Frontend">
+                    <div class="skill-icon">🎨</div>
+                    <h3>CSS3</h3>
+                    <div class="skill-level">92%</div>
+                    <p>Grid, Flexbox, Animations, Responsive Design</p>
+                </div>
+                <div class="skill-card" data-category="3D">
+                    <div class="skill-icon">✨</div>
+                    <h3>WebGL</h3>
+                    <div class="skill-level">78%</div>
+                    <p>Shaders, 3D Rendering, GPU Programming</p>
+                </div>
+                <div class="skill-card" data-category="Database">
+                    <div class="skill-icon">🍃</div>
+                    <h3>MongoDB</h3>
+                    <div class="skill-level">85%</div>
+                    <p>NoSQL, Aggregation, Indexing, Mongoose</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<main>
-  <section id="home" class="content-section active">
-    <h1 id="greeting">Hi — I'm Utkarsh Chaudhary</h1>
-    <p>Aspiring Software Developer • Web, Cybersecurity & Game Design. Diploma + B.Tech student building modern, secure and interactive experiences.</p>
-  </section>
-</main>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card featured" data-tilt>
+                    <div class="project-content">
+                        <h3>3D E-Commerce Platform</h3>
+                        <p>Interactive shopping experience with 3D product visualization using Three.js and WebGL. Customers can rotate, zoom, and customize products in real-time.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">WebGL</span>
+                            <span class="tech-tag">Node.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank">Live Demo</a>
+                            <a href="#" class="project-link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card featured" data-tilt>
+                    <div class="project-content">
+                        <h3>AR Portfolio Showcase</h3>
+                        <p>Augmented reality portfolio that allows users to view projects in 3D space using WebXR API. Features interactive demos and immersive presentations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">WebXR</span>
+                            <span class="tech-tag">Three.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank">Live Demo</a>
+                            <a href="#" class="project-link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-tilt>
+                    <div class="project-content">
+                        <h3>Real-time Collaboration Tool</h3>
+                        <p>Multi-user workspace with real-time editing, video conferencing, and 3D avatar system. Built for remote teams and creative collaboration.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Socket.io</span>
+                            <span class="tech-tag">WebRTC</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Express</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank">Live Demo</a>
+                            <a href="#" class="project-link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-tilt>
+                    <div class="project-content">
+                        <h3>AI-Powered Analytics Dashboard</h3>
+                        <p>Intelligent dashboard with machine learning insights, 3D data visualization, and predictive analytics for business intelligence.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">D3.js</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">React</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link" target="_blank">Live Demo</a>
+                            <a href="#" class="project-link" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-  particlesJS("particles-js", {
-    particles: {
-      number: { value: 50, density: { enable: true, value_area: 900 } },
-      color: { value: ["#00aaff", "#5bbefa", "#037fff"] },
-      shape: { type: "circle" },
-      opacity: { value: 0.6, random: true, anim: { enable: true, speed: 1, opacity_min: 0.3 } },
-      size: { value: 4, random: true },
-      line_linked: {
-        enable: true,
-        distance: 120,
-        color: "#5bbefa",
-        opacity: 0.3,
-        width: 1
-      },
-      move: {
-        enable: true,
-        speed: 2,
-        direction: "none",
-        random: true,
-        straight: false,
-        out_mode: "bounce",
-        bounce: false
-      }
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: { enable: true, mode: "grab" },
-        onclick: { enable: true, mode: "push" },
-        resize: true
-      },
-      modes: {
-        grab: { distance: 140, line_linked: { opacity: 1 } },
-        push: { particles_nb: 4 }
-      }
-    },
-    retina_detect: true
-  });
-</script>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Work Together</h2>
+            <div class="contact-content">
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full-width btn-3d">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>Get in Touch</h4>
+                        <p>Ready to bring your ideas to life? Let's discuss your project and create something amazing together.</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Email</h4>
+                        <p>utkarshchaudhary0918@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Location</h4>
+                        <p>San Francisco, CA</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/alexcarter" class="social-link" target="_blank" title="GitHub">🐙</a>
+                        <a href="https://linkedin.com/in/alexcarter" class="social-link" target="_blank" title="LinkedIn">💼</a>
+                        <a href="https://twitter.com/alexcarter" class="social-link" target="_blank" title="Twitter">🐦</a>
+                        <a href="https://dribbble.com/alexcarter" class="social-link" target="_blank" title="Dribbble">🏀</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-  function logout() {
-    // Optional: clear any local storage / cookies or call sign out APIs
-    window.location.href = 'login.html'; // Redirect to login page
-  }
-</script>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Utkarsh Chaudhary. All rights reserved.</p>
+        </div>
+    </footer>
 
+    <script src="app.js"></script>
 </body>
 </html>
